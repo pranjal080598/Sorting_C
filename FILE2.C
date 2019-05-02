@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	char c;
+	int i;
+	FILE *fp;
+	clrscr();
+	fp=fopen("pran","w");
+	printf("enter data\n");
+	c=getchar();
+	while(c!='.')
+	{
+		putc(c,fp);
+		c=getchar();
+	}
+	fclose(fp);
+	fp=fopen("pran","r");
+	c=getc(fp);
+	while(c!=EOF)
+	{
+		c=getc(fp);
+		printf("%c",c);
+	}
+	fclose(fp);
+	fp=fopen("pran","r");
+	i=1;
+	printf("\n my data \n");
+	c=getc(fp);
+	printf("\n");
+	printf("token 1 ");
+	while(c!=EOF)
+	{
+		if(c==' ')
+		{
+			i++;
+			printf("\ntoken %d ",i);
+			c=getc(fp);
+		}
+		else
+		{
+			printf("%c",c);
+			c=getc(fp);
+		}
+	}
+	getch();
+}
